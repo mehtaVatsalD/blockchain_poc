@@ -1,1 +1,1 @@
-web: java -jar target/blockchain_poc-1.0-spring-boot.jar
+web: java -jar target/blockchain_poc-1.0-spring-boot.jar --spring.config.location=src/main/resources/application.properties
