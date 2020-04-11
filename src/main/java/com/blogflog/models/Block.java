@@ -12,6 +12,10 @@ public class Block {
     private List<Transaction> transactions;
     private Timestamp timestamp;
 
+    public Block() {
+        super();
+    }
+
     public Block(String previousBlockHash, Long goldenNonce, String blockHash, List<Transaction> transactions, Timestamp timestamp) {
         this.previousBlockHash = previousBlockHash;
         this.goldenNonce = goldenNonce;

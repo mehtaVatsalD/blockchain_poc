@@ -6,6 +6,7 @@ import com.blogflog.exception.NoTransactionsToMineException;
 import com.blogflog.models.Block;
 import com.blogflog.models.Transaction;
 import com.blogflog.service.IBlockchainService;
+import com.blogflog.service.INodeManagementService;
 import com.blogflog.service.ITransactionManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,9 @@ public class BlockchainController implements IBlockchainController {
 
     @Autowired
     private IBlockchainService blockchainService;
+
+    @Autowired
+    private INodeManagementService nodeManagementService;
 
     @RequestMapping(value = "/add_transaction", method = RequestMethod.POST)
     public Transaction addTransaction(@RequestBody Transaction transaction) throws InvalidTransactionException {
@@ -49,6 +53,12 @@ public class BlockchainController implements IBlockchainController {
     @RequestMapping(value = "/validate_blockchain")
     public boolean validateBlockchain(){
         return blockchainService.isBlockchainValid();
+    }
+
+    @RequestMapping(value = "/register_nodes", method = RequestMethod.POST)
+    public List<String> registerNodes(@RequestBody List<String> newNodes){
+        nodeManagementService.registerNodes(newNodes);
+        return nodeManagementService.getRegisteredNodes();
     }
 
 }

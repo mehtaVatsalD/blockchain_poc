@@ -24,5 +24,12 @@ public class BlockchainRepository implements IBlockchainRepository {
         return theBlockchain.get(theBlockchain.size()-1).getBlockHash();
     }
 
+    public int getBlockchainLength(){
+        return theBlockchain.size();
+    }
+
+    public void updateBlockchain(List<Block> newBlockChain){
+        this.theBlockchain = new ArrayList<>(newBlockChain);
+    }
 
 }
