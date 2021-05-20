@@ -33,3 +33,5 @@ build/
 *target*
 *iml*
 *mvn*
+
+*node_modules*
